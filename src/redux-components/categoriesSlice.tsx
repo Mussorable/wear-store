@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 interface MainCategories {
-  name: string;
+  title: string;
 }
 
 const initialState = {
