@@ -26,15 +26,15 @@ const Home: React.FC<HomeProps> = ({ api }) => {
     });
   }, []);
 
-  useEffect(() => {
-    console.log(categories);
-  }, [categories]);
-
   return (
     <div className="categories-container">
       {categories &&
-        categories.map((category) => {
-          return <Category key={category.title}>{category.title}</Category>;
+        categories.map(({ title, imageURL }) => {
+          return (
+            <Category imageURL={imageURL} key={title}>
+              {title}
+            </Category>
+          );
         })}
     </div>
   );

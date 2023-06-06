@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 interface MainCategories {
   title: string;
+  imageURL: string;
 }
 
 const initialState = {
