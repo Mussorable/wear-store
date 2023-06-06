@@ -1,10 +1,16 @@
-import { configureStore } from "@reduxjs/toolkit";
-import ownerReducer from "./categoriesSlice";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import categoriesReducer from "./categoriesSlice";
+
+export interface RootState {
+  categories: ReturnType<typeof categoriesReducer>;
+}
+
+const rootReducer = combineReducers({
+  categories: categoriesReducer,
+});
 
 const store = configureStore({
-  reducer: {
-    categories: ownerReducer,
-  },
+  reducer: rootReducer,
 });
 
 export default store;
