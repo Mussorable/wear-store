@@ -31,16 +31,12 @@ const Home: React.FC<HomeProps> = ({ api }) => {
   }, [categories]);
 
   return (
-    <>
+    <div className="categories-container">
       {categories &&
         categories.map((category) => {
-          return (
-            <div key={category.title} className="categories-container">
-              <Category>{category.title}</Category>
-            </div>
-          );
+          return <Category key={category.title}>{category.title}</Category>;
         })}
-    </>
+    </div>
   );
 };
 
