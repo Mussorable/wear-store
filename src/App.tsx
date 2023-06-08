@@ -1,6 +1,8 @@
 import axios from "axios";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./components/Home";
+import Shop from "./routes/Shop";
+import Home from "./routes/Home";
+import Navigation from "./parts/Navigation";
 
 function App() {
   const api = axios.create({
@@ -14,7 +16,10 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home api={api} />} />
+        <Route path="/" element={<Navigation />}>
+          <Route index element={<Home api={api} />} />
+          <Route path="shop" element={<Shop />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

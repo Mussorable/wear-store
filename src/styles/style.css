@@ -6,6 +6,30 @@ body * {
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.navigation {
+  display: flex;
+  height: 65px;
+  justify-content: space-between;
+  align-items: center;
+  margin-inline: 1rem;
+}
+.navigation .navigation-container {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.navigation .navigation-container a {
+  cursor: pointer;
+  padding: 20px 10px;
+}
+
 .categories-container {
   width: 100%;
   display: flex;
@@ -49,9 +73,10 @@ body * {
 .categories-container .category-container .category-body-container h2 {
   margin: 0;
 }
-.categories-container .category-container .category-body-container a {
+.categories-container .category-container .category-body-container p {
   text-decoration: none;
   color: inherit;
+  margin: 0;
 }
 .categories-container .category-container .background-image {
   width: 100%;
