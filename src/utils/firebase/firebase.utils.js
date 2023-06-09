@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDFwZWtdgeth7UHY35lxwTwOlkMHPtLJVU",
@@ -22,5 +23,29 @@ provider.setCustomParameters({
 
 const auth = getAuth();
 const signInWithGooglePopup = () => signInWithPopup(auth, provider);
+
+const db = getFirestore();
+
+export const userDocument = async (userAuth) => {
+  const userDocRef = doc(db, "users", userAuth.uid);
+  const snapshot = await getDoc(userDocRef);
+
+  if (!snapshot.exists()) {
+    const { displayName, email } = userAuth;
+    const timeAt = new Date();
+
+    try {
+      await setDoc(userDocRef, {
+        displayName,
+        email,
+        timeAt,
+      });
+    } catch (error) {
+      console.error("Catch new error:", error.message);
+    }
+  } else if (snapshot.exists()) {
+    return userDocRef;
+  }
+};
 
 export default signInWithGooglePopup;
