@@ -1,5 +1,11 @@
 import Input from "./s-components/Input";
 import React, { useState } from "react";
+import {
+  createUserUsingEmailAndPassword,
+  createUserDocumentAuth,
+  auth,
+} from "../utils/firebase/firebase.utils";
+import { UserCredential } from "firebase/auth";
 
 const SignUp = () => {
   const initialFormValue = {
@@ -13,13 +19,30 @@ const SignUp = () => {
 
   const handleFormChange = (event: React.FormEvent<HTMLInputElement>) => {
     const { name, value } = event.target as HTMLInputElement;
-    // const { displayName, email, password, confirmPassword } = initialFormValue;
 
     setFormValues({ ...formValues, [name]: value });
   };
 
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const { displayName, email, password, confirmPassword } = formValues;
+
+    if (password !== confirmPassword) {
+      console.error("Passwords don't match");
+    }
+
+    try {
+      const addNoteIntoDocument = async () => {
+        const { user } = await createUserUsingEmailAndPassword(email, password);
+        //
+        await createUserDocumentAuth(user, { displayName });
+      };
+
+      addNoteIntoDocument();
+    } catch (error) {
+      console.log(error);
+    }
+
     setFormValues(initialFormValue);
   };
 
