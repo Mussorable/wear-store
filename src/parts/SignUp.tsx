@@ -5,6 +5,8 @@ import {
   createUserDocumentAuth,
 } from "../utils/firebase/firebase.utils";
 import Button from "./s-components/Button";
+import ErrorHandler from "../utils/error-handler/errorHandler";
+import { FirebaseError } from "firebase/app";
 
 const SignUp = () => {
   const initialFormValue = {
@@ -22,7 +24,7 @@ const SignUp = () => {
     setFormValues({ ...formValues, [name]: value });
   };
 
-  const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const { displayName, email, password, confirmPassword } = formValues;
 
@@ -37,9 +39,10 @@ const SignUp = () => {
         await createUserDocumentAuth(user, { displayName });
       };
 
-      addNoteIntoDocument();
+      await addNoteIntoDocument();
     } catch (error) {
-      console.log(error);
+      const { code } = error as FirebaseError;
+      ErrorHandler(code);
     }
 
     setFormValues(initialFormValue);
@@ -47,7 +50,10 @@ const SignUp = () => {
 
   return (
     <div className="signup-form-container">
-      <h2>Don't have an account?</h2>
+      <div className="heading-wrapper">
+        <h2>Don't have an account?</h2>
+        <p>Sign up with your email and password</p>
+      </div>
       <form onSubmit={handleFormSubmit}>
         <Input
           id="signup-name"
