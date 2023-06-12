@@ -20,7 +20,7 @@ function App() {
         <Route path="/" element={<Navigation />}>
           <Route index element={<Home api={api} />} />
           <Route path="shop" element={<Shop />} />
-          <Route path="signIn" element={<Auth />} />
+          <Route path="signin" element={<Auth />} />
         </Route>
       </Routes>
     </BrowserRouter>
