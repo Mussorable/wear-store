@@ -1,0 +1,71 @@
+@use 'variables.sass' as v
+
+body
+    .signup-form-container
+        max-width: 420px
+
+    form
+        display: flex
+        flex-direction: column
+        gap: 1.5rem
+
+        .input-wrapper
+            display: flex
+            flex-direction: column
+            position: relative
+            font-weight: v.$text-input
+
+            .form-input-label
+                color: v.$font-gray-color
+                font-size: v.$text-input
+                font-weight: normal
+                position: absolute
+                pointer-events: none
+                left: 5px
+                top: 5px
+                transition: 200ms ease all
+
+                &.shrink
+                    top: -14px
+                    font-size: 12px
+                    color: v.$font-color
+
+        .input
+            all: unset
+
+            &.input-field
+                font-size: inherit
+                background-color: v.$input-bg-color
+                color: v.$font-color
+                padding: 5px
+                border-bottom: 1px solid v.$border-color
+                font-size: v.$text-input
+
+                &:focus
+                    outline: none
+
+                    &::placeholder
+                        color: transparent
+
+                    &[type='password']
+                        letter-spacing: .3rem
+
+                    &[type='password']::placeholder
+                        letter-spacing: normal
+
+            &.button[type="submit"]
+                width: 50%
+                padding: 8px 5px
+                border: 1px solid v.$border-color
+                background-color: v.$border-color
+                color: v.$font-light-color
+                text-align: center
+                font-weight: bold
+
+                &:hover
+                    background-color: v.$border-light-color
+                    color: v.$font-color
+                    cursor: pointer
+
+                &:active
+                    translate: 1px 1px

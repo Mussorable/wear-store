@@ -93,4 +93,80 @@ a {
   height: 100%;
   background-size: cover;
   background-position: center;
+}
+
+body .signup-form-container {
+  max-width: 420px;
+}
+body form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+body form .input-wrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  font-weight: 1.1rem;
+}
+body form .input-wrapper .form-input-label {
+  color: #A9A9AC;
+  font-size: 1.1rem;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 5px;
+  transition: 200ms ease all;
+}
+body form .input-wrapper .form-input-label.shrink {
+  top: -14px;
+  font-size: 12px;
+  color: #121212;
+}
+body form .input {
+  all: unset;
+}
+body form .input.input-field {
+  font-size: inherit;
+  background-color: white;
+  color: #121212;
+  padding: 5px;
+  border-bottom: 1px solid #121212;
+  font-size: 1.1rem;
+}
+body form .input.input-field:focus {
+  outline: none;
+}
+body form .input.input-field:focus::-moz-placeholder {
+  color: transparent;
+}
+body form .input.input-field:focus::placeholder {
+  color: transparent;
+}
+body form .input.input-field:focus[type=password] {
+  letter-spacing: 0.3rem;
+}
+body form .input.input-field:focus[type=password]::-moz-placeholder {
+  letter-spacing: normal;
+}
+body form .input.input-field:focus[type=password]::placeholder {
+  letter-spacing: normal;
+}
+body form .input.button[type=submit] {
+  width: 50%;
+  padding: 8px 5px;
+  border: 1px solid #121212;
+  background-color: #121212;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+body form .input.button[type=submit]:hover {
+  background-color: white;
+  color: #121212;
+  cursor: pointer;
+}
+body form .input.button[type=submit]:active {
+  translate: 1px 1px;
 }/*# sourceMappingURL=style.css.map */

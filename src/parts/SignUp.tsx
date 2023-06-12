@@ -3,9 +3,8 @@ import React, { useState } from "react";
 import {
   createUserUsingEmailAndPassword,
   createUserDocumentAuth,
-  auth,
 } from "../utils/firebase/firebase.utils";
-import { UserCredential } from "firebase/auth";
+import Button from "./s-components/Button";
 
 const SignUp = () => {
   const initialFormValue = {
@@ -47,47 +46,52 @@ const SignUp = () => {
   };
 
   return (
-    <>
+    <div className="signup-form-container">
+      <h2>Don't have an account?</h2>
       <form onSubmit={handleFormSubmit}>
         <Input
+          id="signup-name"
+          label
           required
           type="input"
-          className="input"
           placeholder="Display Name"
           name="displayName"
           value={formValues["displayName"]}
           onChange={handleFormChange}
         />
         <Input
+          id="signup-email"
+          label
           required
           type="Email"
-          className="input"
           placeholder="Email"
           name="email"
           value={formValues["email"]}
           onChange={handleFormChange}
         />
         <Input
+          id="signup-password"
+          label
           required
           type="Password"
-          className="input"
           placeholder="Password"
           name="password"
           value={formValues["password"]}
           onChange={handleFormChange}
         />
         <Input
+          id="signup-confirm-password"
+          label
           required
           type="Password"
-          className="input"
           placeholder="Confirm Password"
           name="confirmPassword"
           value={formValues["confirmPassword"]}
           onChange={handleFormChange}
         />
-        <Input type="submit" className="input" value="Sign Up" />
+        <Button type="submit">Sign Up</Button>
       </form>
-    </>
+    </div>
   );
 };
 
