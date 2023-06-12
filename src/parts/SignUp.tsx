@@ -7,8 +7,11 @@ import {
 import Button from "./s-components/Button";
 import ErrorHandler from "../utils/error-handler/errorHandler";
 import { FirebaseError } from "firebase/app";
+import { useDispatch } from "react-redux";
+import { setUser } from "../redux-components/userSlice";
 
 const SignUp = () => {
+  const dispatch = useDispatch();
   const initialFormValue = {
     displayName: "",
     email: "",
@@ -37,6 +40,13 @@ const SignUp = () => {
         const { user } = await createUserUsingEmailAndPassword(email, password);
         //
         await createUserDocumentAuth(user, { displayName });
+
+        const serializedUser = {
+          uid: user.uid,
+          email: user.email,
+          emailVerified: user.emailVerified,
+        };
+        dispatch(setUser(serializedUser));
       };
 
       await addNoteIntoDocument();
