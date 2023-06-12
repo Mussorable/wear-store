@@ -95,21 +95,34 @@ a {
   background-position: center;
 }
 
-body .signup-form-container {
-  max-width: 420px;
+body .auth-container {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  gap: 1rem;
 }
-body form {
+body .auth-container .signup-form-container,
+body .auth-container .signin-form-container {
+  width: 420px;
+}
+body .auth-container .signup-form-container .heading-wrapper h2, body .auth-container .signup-form-container .heading-wrapper p,
+body .auth-container .signin-form-container .heading-wrapper h2,
+body .auth-container .signin-form-container .heading-wrapper p {
+  margin: 0.5rem;
+}
+body .auth-container form {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  margin-top: 2rem;
 }
-body form .input-wrapper {
+body .auth-container form .input-wrapper {
   display: flex;
   flex-direction: column;
   position: relative;
   font-weight: 1.1rem;
 }
-body form .input-wrapper .form-input-label {
+body .auth-container form .input-wrapper .form-input-label {
   color: #A9A9AC;
   font-size: 1.1rem;
   font-weight: normal;
@@ -119,15 +132,15 @@ body form .input-wrapper .form-input-label {
   top: 5px;
   transition: 200ms ease all;
 }
-body form .input-wrapper .form-input-label.shrink {
+body .auth-container form .input-wrapper .form-input-label.shrink {
   top: -14px;
   font-size: 12px;
   color: #121212;
 }
-body form .input {
+body .auth-container form .input {
   all: unset;
 }
-body form .input.input-field {
+body .auth-container form .input.input-field {
   font-size: inherit;
   background-color: white;
   color: #121212;
@@ -135,25 +148,25 @@ body form .input.input-field {
   border-bottom: 1px solid #121212;
   font-size: 1.1rem;
 }
-body form .input.input-field:focus {
+body .auth-container form .input.input-field:focus {
   outline: none;
 }
-body form .input.input-field:focus::-moz-placeholder {
+body .auth-container form .input.input-field::-moz-placeholder {
   color: transparent;
 }
-body form .input.input-field:focus::placeholder {
+body .auth-container form .input.input-field::placeholder {
   color: transparent;
 }
-body form .input.input-field:focus[type=password] {
+body .auth-container form .input.input-field[type=password] {
   letter-spacing: 0.3rem;
 }
-body form .input.input-field:focus[type=password]::-moz-placeholder {
+body .auth-container form .input.input-field[type=password]::-moz-placeholder {
   letter-spacing: normal;
 }
-body form .input.input-field:focus[type=password]::placeholder {
+body .auth-container form .input.input-field[type=password]::placeholder {
   letter-spacing: normal;
 }
-body form .input.button[type=submit] {
+body .auth-container form .input.button {
   width: 50%;
   padding: 8px 5px;
   border: 1px solid #121212;
@@ -162,11 +175,22 @@ body form .input.button[type=submit] {
   text-align: center;
   font-weight: bold;
 }
-body form .input.button[type=submit]:hover {
+body .auth-container form .input.button.google {
+  background-color: #4285F4;
+  border-color: #4285F4;
+}
+body .auth-container form .input.button:hover {
   background-color: white;
+  border-color: #121212;
   color: #121212;
   cursor: pointer;
 }
-body form .input.button[type=submit]:active {
+body .auth-container form .input.button:active {
   translate: 1px 1px;
+}
+body .auth-container form .button-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 }/*# sourceMappingURL=style.css.map */

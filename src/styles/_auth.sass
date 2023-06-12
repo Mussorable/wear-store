@@ -1,48 +1,60 @@
 @use 'variables.sass' as v
 
 body
-    .signup-form-container
-        max-width: 420px
-
-    form
+    .auth-container
         display: flex
-        flex-direction: column
-        gap: 1.5rem
+        align-items: start
+        justify-content: center
+        gap: 1rem
 
-        .input-wrapper
+        .signup-form-container,
+        .signin-form-container
+            width: 420px
+
+            .heading-wrapper
+                h2, p
+                    margin: 0.5rem
+
+        form
             display: flex
             flex-direction: column
-            position: relative
-            font-weight: v.$text-input
+            gap: 1.5rem
+            margin-top: 2rem
 
-            .form-input-label
-                color: v.$font-gray-color
-                font-size: v.$text-input
-                font-weight: normal
-                position: absolute
-                pointer-events: none
-                left: 5px
-                top: 5px
-                transition: 200ms ease all
+            .input-wrapper
+                display: flex
+                flex-direction: column
+                position: relative
+                font-weight: v.$text-input
 
-                &.shrink
-                    top: -14px
-                    font-size: 12px
+                .form-input-label
+                    color: v.$font-gray-color
+                    font-size: v.$text-input
+                    font-weight: normal
+                    position: absolute
+                    pointer-events: none
+                    left: 5px
+                    top: 5px
+                    transition: 200ms ease all
+
+                    &.shrink
+                        top: -14px
+                        font-size: 12px
+                        color: v.$font-color
+
+            .input
+                all: unset
+
+                &.input-field
+                    font-size: inherit
+                    background-color: v.$input-bg-color
                     color: v.$font-color
+                    padding: 5px
+                    border-bottom: 1px solid v.$border-color
+                    font-size: v.$text-input
 
-        .input
-            all: unset
-
-            &.input-field
-                font-size: inherit
-                background-color: v.$input-bg-color
-                color: v.$font-color
-                padding: 5px
-                border-bottom: 1px solid v.$border-color
-                font-size: v.$text-input
-
-                &:focus
-                    outline: none
+                    &:focus
+                        outline: none
 
                     &::placeholder
                         color: transparent
@@ -53,19 +65,30 @@ body
                     &[type='password']::placeholder
                         letter-spacing: normal
 
-            &.button[type="submit"]
-                width: 50%
-                padding: 8px 5px
-                border: 1px solid v.$border-color
-                background-color: v.$border-color
-                color: v.$font-light-color
-                text-align: center
-                font-weight: bold
+                &.button
+                    width: 50%
+                    padding: 8px 5px
+                    border: 1px solid v.$border-color
+                    background-color: v.$border-color
+                    color: v.$font-light-color
+                    text-align: center
+                    font-weight: bold
 
-                &:hover
-                    background-color: v.$border-light-color
-                    color: v.$font-color
-                    cursor: pointer
+                    &.google
+                        background-color: v.$google-button
+                        border-color: v.$google-button
 
-                &:active
-                    translate: 1px 1px
+                    &:hover
+                        background-color: v.$border-light-color
+                        border-color: v.$border-color
+                        color: v.$font-color
+                        cursor: pointer
+
+                    &:active
+                        translate: 1px 1px
+
+            .button-wrapper
+                display: flex
+                align-items: center
+                justify-content: center
+                gap: 1rem
