@@ -7,6 +7,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  onAuthStateChanged,
 } from "firebase/auth";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 
@@ -65,3 +66,6 @@ export const createUserDocumentAuth = async (
 export const createUserUsingEmailAndPassword = async (email, password) => {
   return await createUserWithEmailAndPassword(auth, email, password);
 };
+
+export const onUserStateChanged = (callback) =>
+  onAuthStateChanged(auth, callback);
