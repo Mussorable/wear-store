@@ -1,0 +1,49 @@
+@use 'variables.sass' as v
+
+body
+    .auth-container
+        display: flex
+        align-items: start
+        justify-content: center
+        gap: 1rem
+
+        .signup-form-container,
+        .signin-form-container
+            width: 420px
+
+            .heading-wrapper
+                h2, p
+                    margin: 0.5rem
+
+        form
+            display: flex
+            flex-direction: column
+            gap: 1.5rem
+            margin-top: 2rem
+
+            .input-wrapper
+                display: flex
+                flex-direction: column
+                position: relative
+                font-weight: v.$text-input
+
+                .form-input-label
+                    color: v.$font-gray-color
+                    font-size: v.$text-input
+                    font-weight: normal
+                    position: absolute
+                    pointer-events: none
+                    left: 5px
+                    top: 5px
+                    transition: 200ms ease all
+
+                    &.shrink
+                        top: -14px
+                        font-size: 12px
+                        color: v.$font-color
+
+            .button-wrapper
+                display: flex
+                align-items: center
+                justify-content: center
+                gap: 1rem
