@@ -8,12 +8,8 @@ import Button from "./s-components/Button";
 import Input from "./s-components/Input";
 import ErrorHandler from "../utils/error-handler/errorHandler.js";
 import { FirebaseError } from "firebase/app";
-import { setUser } from "../redux-components/userSlice.js";
-import { useDispatch } from "react-redux";
 
 const SignIn = () => {
-  const dispatch = useDispatch();
-
   const googleUserPopup = async () => {
     const { user } = await signInWithGooglePopup();
     await createUserDocumentAuth(user);
@@ -39,16 +35,7 @@ const SignIn = () => {
     try {
       if (!email || !password) return;
       const getResp = async () => {
-        const { user } = await signInWithGoogleEmailAndPassword(
-          email,
-          password
-        );
-        const serializedUser = {
-          uid: user.uid,
-          email: user.email,
-          emailVerified: user.emailVerified,
-        };
-        dispatch(setUser(serializedUser));
+        await signInWithGoogleEmailAndPassword(email, password);
       };
 
       await getResp();
