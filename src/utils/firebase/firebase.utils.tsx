@@ -8,6 +8,8 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
+  NextOrObserver,
+  User,
 } from "firebase/auth";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 
@@ -31,14 +33,16 @@ provider.setCustomParameters({
 
 export const auth = getAuth();
 export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
-export const signInWithGoogleEmailAndPassword = (email, password) =>
-  signInWithEmailAndPassword(auth, email, password);
+export const signInWithGoogleEmailAndPassword = (
+  email: string,
+  password: string
+) => signInWithEmailAndPassword(auth, email, password);
 export const signOutUser = async () => await signOut(auth);
 
 const db = getFirestore();
 
 export const createUserDocumentAuth = async (
-  userAuth,
+  userAuth: User,
   additionalInformation = {}
 ) => {
   const userDocRef = doc(db, "users", userAuth.uid);
@@ -55,7 +59,7 @@ export const createUserDocumentAuth = async (
         timeAt,
         ...additionalInformation,
       });
-    } catch (error) {
+    } catch (error: any) {
       console.error("Catch new error:", error.message);
     }
   } else if (snapshot.exists()) {
@@ -63,9 +67,14 @@ export const createUserDocumentAuth = async (
   }
 };
 
-export const createUserUsingEmailAndPassword = async (email, password) => {
+export const createUserUsingEmailAndPassword = async (
+  email: string,
+  password: string
+) => {
   return await createUserWithEmailAndPassword(auth, email, password);
 };
 
-export const onUserStateChanged = (callback) =>
+export type UserStateChangedCallback = (user: User | null) => void;
+
+export const onUserStateChanged = (callback: UserStateChangedCallback) =>
   onAuthStateChanged(auth, callback);

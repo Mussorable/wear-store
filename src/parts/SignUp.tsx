@@ -55,6 +55,7 @@ const SignUp = () => {
       </div>
       <form onSubmit={handleFormSubmit}>
         <Input
+          autoComplete="given-name"
           id="signup-name"
           label
           required
@@ -65,6 +66,7 @@ const SignUp = () => {
           onChange={handleFormChange}
         />
         <Input
+          autoComplete="email"
           id="signup-email"
           label
           required
@@ -75,6 +77,7 @@ const SignUp = () => {
           onChange={handleFormChange}
         />
         <Input
+          autoComplete="new-password"
           id="signup-password"
           label
           required
@@ -85,6 +88,7 @@ const SignUp = () => {
           onChange={handleFormChange}
         />
         <Input
+          autoComplete="new-password"
           id="signup-confirm-password"
           label
           required

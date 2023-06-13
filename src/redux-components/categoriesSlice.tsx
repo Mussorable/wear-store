@@ -5,8 +5,16 @@ interface MainCategories {
   imageURL: string;
 }
 
+export interface WearData {
+  id: number;
+  imageUrl: string;
+  name: string;
+  price: number;
+}
+
 const initialState = {
   mainCategories: [] as MainCategories[],
+  hats: [] as WearData[],
 };
 
 const categoriesSlice = createSlice({
@@ -16,9 +24,12 @@ const categoriesSlice = createSlice({
     setMainCaterories(state, action) {
       state.mainCategories = action.payload;
     },
+    setHats(state, action) {
+      state.hats = action.payload;
+    },
   },
 });
 
-export const { setMainCaterories } = categoriesSlice.actions;
+export const { setMainCaterories, setHats } = categoriesSlice.actions;
 
 export default categoriesSlice.reducer;

@@ -42,51 +42,6 @@ body
                         font-size: 12px
                         color: v.$font-color
 
-            .input
-                all: unset
-
-                &.input-field
-                    font-size: inherit
-                    background-color: v.$input-bg-color
-                    color: v.$font-color
-                    padding: 5px
-                    border-bottom: 1px solid v.$border-color
-                    font-size: v.$text-input
-
-                    &:focus
-                        outline: none
-
-                    &::placeholder
-                        color: transparent
-
-                    &[type='password']
-                        letter-spacing: .3rem
-
-                    &[type='password']::placeholder
-                        letter-spacing: normal
-
-                &.button
-                    width: 50%
-                    padding: 8px 5px
-                    border: 1px solid v.$border-color
-                    background-color: v.$border-color
-                    color: v.$font-light-color
-                    text-align: center
-                    font-weight: bold
-
-                    &.google
-                        background-color: v.$google-button
-                        border-color: v.$google-button
-
-                    &:hover
-                        background-color: v.$border-light-color
-                        border-color: v.$border-color
-                        color: v.$font-color
-                        cursor: pointer
-
-                    &:active
-                        translate: 1px 1px
-
             .button-wrapper
                 display: flex
                 align-items: center
