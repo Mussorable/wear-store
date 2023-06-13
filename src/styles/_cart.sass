@@ -1,0 +1,45 @@
+@use 'variables.sass' as v
+
+.cart-wrapper
+    display: relative
+
+    .cart-icon-container
+        width: 45px
+        height: 45px
+        position: relative
+        display: flex
+        align-items: center
+        justify-content: center
+        cursor: pointer
+
+        .shopping-icon
+            width: 24px
+            height: 24px
+
+        .item-count
+            position: absolute
+            font-size: 10px
+            font-weight: bold
+            bottom: 2px
+
+        &:active
+            translate: 1px 1px
+
+    .dropdown-container
+        position: absolute
+        display: flex
+        gap: 1rem
+        flex-direction: column
+        z-index: 1
+        width: 260px
+        max-width: 300px
+        top: 65px
+        right: 24px
+        border: 3px solid v.$border-color
+        background-color: v.$border-light-color
+        padding: 10px 15px
+
+        .button
+            text-transform: uppercase
+            width: 150px
+            margin: auto
