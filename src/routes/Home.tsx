@@ -10,8 +10,6 @@ interface HomeProps {
 }
 
 const Home: React.FC<HomeProps> = ({ api }) => {
-  const categoriesEndpoint = "categories.json";
-
   const categories = useSelector(
     (state: RootState) => state.categories.mainCategories
   );
@@ -19,7 +17,7 @@ const Home: React.FC<HomeProps> = ({ api }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    api.get(categoriesEndpoint).then((resp) => {
+    api.get("categories.json").then((resp) => {
       const category = resp.data;
 
       dispatch(setMainCaterories(category));

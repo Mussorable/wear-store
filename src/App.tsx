@@ -4,7 +4,10 @@ import Shop from "./routes/Shop";
 import Home from "./routes/Home";
 import Navigation from "./parts/Navigation";
 import Auth from "./routes/Auth";
-import { onUserStateChanged } from "./utils/firebase/firebase.utils";
+import {
+  createUserDocumentAuth,
+  onUserStateChanged,
+} from "./utils/firebase/firebase.utils";
 import { User } from "firebase/auth";
 import { useEffect } from "react";
 import { setUser } from "./redux-components/userSlice";
@@ -21,7 +24,7 @@ function App() {
   });
 
   useEffect(() => {
-    onUserStateChanged((user: User) => {
+    onUserStateChanged((user: User | null) => {
       if (user) {
         const serializedUser = {
           uid: user.uid,
@@ -29,6 +32,7 @@ function App() {
           emailVerified: user.emailVerified,
         };
         dispatch(setUser(serializedUser));
+        createUserDocumentAuth(user);
       } else {
         dispatch(setUser(null));
       }
@@ -40,7 +44,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigation />}>
           <Route index element={<Home api={api} />} />
-          <Route path="shop" element={<Shop />} />
+          <Route path="shop" element={<Shop api={api} />} />
           <Route path="signin" element={<Auth />} />
         </Route>
       </Routes>

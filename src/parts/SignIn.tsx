@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import {
   signInWithGooglePopup,
-  createUserDocumentAuth,
   signInWithGoogleEmailAndPassword,
-} from "../utils/firebase/firebase.utils.js";
+} from "../utils/firebase/firebase.utils";
 import Button from "./s-components/Button";
 import Input from "./s-components/Input";
 import ErrorHandler from "../utils/error-handler/errorHandler.js";
@@ -11,8 +10,7 @@ import { FirebaseError } from "firebase/app";
 
 const SignIn = () => {
   const googleUserPopup = async () => {
-    const { user } = await signInWithGooglePopup();
-    await createUserDocumentAuth(user);
+    await signInWithGooglePopup();
   };
 
   const initialFormValue = {
@@ -56,6 +54,8 @@ const SignIn = () => {
         <Input
           label
           required
+          id="signin-email"
+          autoComplete="email"
           placeholder="Email"
           type="email"
           name="email"
@@ -65,6 +65,8 @@ const SignIn = () => {
         <Input
           label
           required
+          id="signin-password"
+          autoComplete="current-password"
           placeholder="Password"
           type="password"
           name="password"
