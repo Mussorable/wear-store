@@ -1,5 +1,5 @@
 body {
-  margin: 0;
+  margin: 0.5rem 1.5rem;
   font-family: "Poppins", sans-serif;
 }
 body * {
@@ -237,4 +237,90 @@ body .auth-container form .button-wrapper {
   right: 0;
   margin: auto;
   visibility: hidden;
+}
+
+.cart-wrapper {
+  display: relative;
+}
+.cart-wrapper .cart-icon-container {
+  width: 45px;
+  height: 45px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.cart-wrapper .cart-icon-container .shopping-icon {
+  width: 24px;
+  height: 24px;
+}
+.cart-wrapper .cart-icon-container .item-count {
+  position: absolute;
+  font-size: 10px;
+  font-weight: bold;
+  bottom: 2px;
+}
+.cart-wrapper .cart-icon-container:active {
+  translate: 1px 1px;
+}
+.cart-wrapper .dropdown-container {
+  position: absolute;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  z-index: 1;
+  width: 260px;
+  max-width: 300px;
+  top: 65px;
+  right: 24px;
+  border: 3px solid #121212;
+  background-color: white;
+  padding: 10px 15px;
+}
+.cart-wrapper .dropdown-container .dropdown-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.cart-wrapper .dropdown-container .dropdown-footer .dropdown-total-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.cart-wrapper .dropdown-container .dropdown-footer .dropdown-total-wrapper p {
+  font-weight: bold;
+}
+.cart-wrapper .dropdown-container .dropdown-footer .button {
+  text-transform: uppercase;
+  width: 150px;
+}
+.cart-wrapper .dropdown-container .cart-products {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  overflow: scroll;
+  max-height: 300px;
+}
+.cart-wrapper .dropdown-container .cart-products .cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cart-wrapper .dropdown-container .cart-products .cart-item img {
+  width: 70px;
+  height: 80px;
+}
+.cart-wrapper .dropdown-container .cart-products .cart-item .cart-details-container {
+  min-width: 120px;
+}
+.cart-wrapper .dropdown-container .cart-products .cart-item .cart-details-container p {
+  margin: 0;
+}
+.cart-wrapper .dropdown-container .cart-products .cart-item .cart-details-container .cart-price-wrapper {
+  display: flex;
+  justify-content: start;
+  gap: 5px;
 }/*# sourceMappingURL=style.css.map */
