@@ -1,5 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setCartItems, WearData } from "../redux-components/categoriesSlice";
+import {
+  setCartItems,
+  setTotalCartProducts,
+  WearData,
+} from "../redux-components/categoriesSlice";
 import { RootState } from "../redux-components/store";
 import Button from "./s-components/Button";
 
@@ -18,14 +22,16 @@ const Product: React.FC<ProductProps> = ({ product }) => {
     const existingCartItem = cartItems.find((item) => item.id === id);
     if (existingCartItem) {
       return cartItems.map((item) =>
-        item.id === id ? { ...item, quantity: item.quantity + 1 } : cartItems
+        item.id === id ? { ...item, quantity: item.quantity + 1 } : { ...item }
       );
     }
+
     return [...cartItems, product];
   };
 
   const handleButtonClick = () => {
     dispatch(setCartItems(addProductToCart()));
+    dispatch(setTotalCartProducts(addProductToCart()));
   };
 
   return (
@@ -33,7 +39,7 @@ const Product: React.FC<ProductProps> = ({ product }) => {
       <img src={imageUrl} alt="" />
       <div className="footer">
         <p className="product-title">{name}</p>
-        <p className="product-cost">{price}</p>
+        <p className="product-cost">${price}</p>
       </div>
       <Button
         additionalClasses="product-buy-button"

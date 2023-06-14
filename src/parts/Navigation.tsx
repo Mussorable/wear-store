@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, Outlet } from "react-router-dom";
 import { default as Logo } from "../assets/logo.svg";
@@ -10,11 +10,6 @@ import CartIcon from "./s-components/CartIcon";
 const Navigation = () => {
   const [isCartDropdown, setIsCartDropdown] = useState(false);
   const user = useSelector((state: RootState) => state.user.user);
-  //
-  const cartLogs = useSelector(
-    (state: RootState) => state.categories.cartItems
-  );
-  useEffect(() => console.log(cartLogs), [cartLogs]);
   return (
     <>
       <div className="navigation">
