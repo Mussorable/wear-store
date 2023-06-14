@@ -1,14 +1,29 @@
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux-components/store";
+import CartItem from "./CartItem";
 import Button from "./Button";
 
 const CartDropdown = () => {
+  const cartLogs = useSelector(
+    (state: RootState) => state.categories.cartItems
+  );
+  const { totalCost } = useSelector(
+    (state: RootState) => state.categories.totalCartProducts
+  );
+
   return (
     <div className="dropdown-container">
       <div className="cart-products">
-        <p>PRODUCT</p>
-        <p>PRODUCT</p>
-        <p>PRODUCT</p>
+        {cartLogs &&
+          cartLogs.map((item) => <CartItem key={item.id} {...item} />)}
       </div>
-      <Button>Go to checkout</Button>
+      <div className="dropdown-footer">
+        <div className="dropdown-total-wrapper">
+          <p>TOTAL:</p>
+          <p>${totalCost}</p>
+        </div>
+        <Button>Go to checkout</Button>
+      </div>
     </div>
   );
 };

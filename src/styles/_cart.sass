@@ -39,7 +39,48 @@
         background-color: v.$border-light-color
         padding: 10px 15px
 
-        .button
-            text-transform: uppercase
-            width: 150px
-            margin: auto
+        .dropdown-footer
+            display: flex
+            flex-direction: column
+            align-items: center
+            justify-content: center
+
+            .dropdown-total-wrapper
+                display: flex
+                align-items: center
+                justify-content: space-between
+                gap: 1rem
+
+                p
+                    font-weight: bold
+
+            .button
+                text-transform: uppercase
+                width: 150px
+
+        .cart-products
+            display: flex
+            flex-direction: column
+            gap: 1.6rem
+            overflow: scroll
+            max-height: 300px
+
+            .cart-item
+                display: flex
+                align-items: center
+                justify-content: space-between
+
+                img
+                    width: 70px
+                    height: 80px
+
+                .cart-details-container
+                    min-width: 120px
+
+                    p
+                        margin: 0
+
+                    .cart-price-wrapper
+                        display: flex
+                        justify-content: start
+                        gap: 5px

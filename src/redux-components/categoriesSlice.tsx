@@ -10,11 +10,22 @@ export interface WearData {
   imageUrl: string;
   name: string;
   price: number;
+  quantity: number;
+}
+
+interface TotalCartDataInterface {
+  totalQuantity: number;
+  totalCost: number;
 }
 
 const initialState = {
   mainCategories: [] as MainCategories[],
   hats: [] as WearData[],
+  cartItems: [] as WearData[],
+  totalCartProducts: {
+    totalQuantity: 0,
+    totalCost: 0,
+  } as TotalCartDataInterface,
 };
 
 const categoriesSlice = createSlice({
@@ -27,9 +38,34 @@ const categoriesSlice = createSlice({
     setHats(state, action) {
       state.hats = action.payload;
     },
+    setCartItems(state, action) {
+      state.cartItems = action.payload;
+    },
+    setTotalCartProducts(state, action) {
+      const totalQuantity = action.payload.reduce(
+        (accumulator: number, currentValue: WearData) =>
+          accumulator + currentValue.quantity,
+        0
+      );
+      const totalCost = action.payload.reduce(
+        (accumulator: number, currentValue: WearData) =>
+          accumulator + currentValue.quantity * currentValue.price,
+        0
+      );
+
+      state.totalCartProducts = {
+        totalQuantity,
+        totalCost,
+      };
+    },
   },
 });
 
-export const { setMainCaterories, setHats } = categoriesSlice.actions;
+export const {
+  setMainCaterories,
+  setHats,
+  setCartItems,
+  setTotalCartProducts,
+} = categoriesSlice.actions;
 
 export default categoriesSlice.reducer;
