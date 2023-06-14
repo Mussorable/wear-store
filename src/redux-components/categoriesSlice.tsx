@@ -10,11 +10,13 @@ export interface WearData {
   imageUrl: string;
   name: string;
   price: number;
+  quantity: number;
 }
 
 const initialState = {
   mainCategories: [] as MainCategories[],
   hats: [] as WearData[],
+  cartItems: [] as WearData[],
 };
 
 const categoriesSlice = createSlice({
@@ -27,9 +29,13 @@ const categoriesSlice = createSlice({
     setHats(state, action) {
       state.hats = action.payload;
     },
+    setCartItems(state, action) {
+      state.cartItems = action.payload;
+    },
   },
 });
 
-export const { setMainCaterories, setHats } = categoriesSlice.actions;
+export const { setMainCaterories, setHats, setCartItems } =
+  categoriesSlice.actions;
 
 export default categoriesSlice.reducer;

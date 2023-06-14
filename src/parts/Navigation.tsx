@@ -10,7 +10,11 @@ import CartIcon from "./s-components/CartIcon";
 const Navigation = () => {
   const [isCartDropdown, setIsCartDropdown] = useState(false);
   const user = useSelector((state: RootState) => state.user.user);
-  useEffect(() => console.log(isCartDropdown), [isCartDropdown]);
+  //
+  const cartLogs = useSelector(
+    (state: RootState) => state.categories.cartItems
+  );
+  useEffect(() => console.log(cartLogs), [cartLogs]);
   return (
     <>
       <div className="navigation">
