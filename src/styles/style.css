@@ -227,6 +227,14 @@ body .auth-container form .button-wrapper {
   align-items: center;
   justify-content: center;
 }
+.page-wrapper .products-checkout-container .product-block .quantity-control-product-wrapper button {
+  all: unset;
+  display: flex;
+  align-items: center;
+}
+.page-wrapper .products-checkout-container .product-block .quantity-control-product-wrapper button:active {
+  translate: 1px 1px;
+}
 .page-wrapper .page-table-footer {
   display: flex;
   justify-content: space-between;

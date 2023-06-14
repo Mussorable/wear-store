@@ -20,7 +20,8 @@ const Checkout = () => {
         <p>Remove</p>
       </div>
       <div className="products-checkout-container">
-        {cartItems && cartItems.map((item) => <ProductCheckout {...item} />)}
+        {cartItems &&
+          cartItems.map((item) => <ProductCheckout key={item.id} {...item} />)}
       </div>
       <div className="page-table-footer">
         <div className="total-cost-wrapper">
