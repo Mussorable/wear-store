@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux-components/store";
 import CartItem from "./CartItem";
-import Button from "./Button";
+import { Link } from "react-router-dom";
 
 const CartDropdown = () => {
   const cartLogs = useSelector(
@@ -22,7 +22,9 @@ const CartDropdown = () => {
           <p>TOTAL:</p>
           <p>${totalCost}</p>
         </div>
-        <Button>Go to checkout</Button>
+        <Link className="input button" to={"/checkout"}>
+          Go to checkout
+        </Link>
       </div>
     </div>
   );
