@@ -14,6 +14,10 @@ const ProductCheckout: React.FC<WearData> = (item) => {
   const cartItems = useSelector(
     (state: RootState) => state.categories.cartItems
   );
+  const totalCartProducts = useSelector(
+    (state: RootState) => state.categories.totalCartProducts
+  );
+
   const dispatch = useDispatch();
   const { quantity, name, imageUrl, price, id } = item;
 
@@ -52,6 +56,14 @@ const ProductCheckout: React.FC<WearData> = (item) => {
     dispatch(setTotalCartProducts(addCartItemToCart()));
   };
 
+  const handleRemoveProduct = () => {
+    const filteredArray = cartItems.filter(
+      (cartItem) => cartItem.id !== item.id
+    );
+    dispatch(setCartItems(filteredArray));
+    dispatch(setTotalCartProducts(filteredArray));
+  };
+
   return (
     <div className="product-block">
       <img className="product-image" src={imageUrl} alt="product-image" />
@@ -66,7 +78,7 @@ const ProductCheckout: React.FC<WearData> = (item) => {
         </button>
       </div>
       <p>${quantity * price}</p>
-      <button>
+      <button onClick={handleRemoveProduct}>
         <img src={Remove} width="17" height="17" alt="remove-product-button" />
       </button>
     </div>
