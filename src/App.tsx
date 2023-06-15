@@ -12,6 +12,7 @@ import { User } from "firebase/auth";
 import { useEffect } from "react";
 import { setUser } from "./redux-components/userSlice";
 import { useDispatch } from "react-redux";
+import Checkout from "./routes/Checkout";
 
 function App() {
   const dispatch = useDispatch();
@@ -46,6 +47,7 @@ function App() {
           <Route index element={<Home api={api} />} />
           <Route path="shop" element={<Shop api={api} />} />
           <Route path="signin" element={<Auth />} />
+          <Route path="checkout" element={<Checkout />} />
         </Route>
       </Routes>
     </BrowserRouter>
