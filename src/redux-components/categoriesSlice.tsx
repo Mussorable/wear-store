@@ -58,6 +58,12 @@ const categoriesSlice = createSlice({
         totalCost,
       };
     },
+    setDeleteProductFromCart(state, action) {
+      const filteredArray = state.cartItems.filter(
+        (item) => item.id !== action.payload.id
+      );
+      state.cartItems = filteredArray;
+    },
   },
 });
 
@@ -66,6 +72,7 @@ export const {
   setHats,
   setCartItems,
   setTotalCartProducts,
+  setDeleteProductFromCart,
 } = categoriesSlice.actions;
 
 export default categoriesSlice.reducer;
