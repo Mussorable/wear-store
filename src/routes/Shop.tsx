@@ -1,29 +1,30 @@
-import { AxiosInstance } from "axios";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { Fragment } from "react";
+import { useSelector } from "react-redux";
 import Product from "../parts/Product";
-import { setHats } from "../redux-components/categoriesSlice";
+import { WearData } from "../redux-components/categoriesSlice";
 import { RootState } from "../redux-components/store";
 
-interface ShopProps {
-  api: AxiosInstance;
-}
-
-const Shop: React.FC<ShopProps> = ({ api }) => {
-  const hats = useSelector((state: RootState) => state.categories.hats);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    api.get("staff/hats.json").then((resp) => {
-      const hats = resp.data;
-      dispatch(setHats(hats));
-    });
-  }, []);
+const Shop = () => {
+  const listOfProducts = useSelector(
+    (state: RootState) => state.categories.listOfProducts
+  );
+  console.log(listOfProducts);
 
   return (
     <div className="products-container">
-      {hats &&
-        hats.map((product) => <Product key={product.id} product={product} />)}
+      {listOfProducts &&
+        Object.keys(listOfProducts).map((title: string) => {
+          return (
+            <Fragment key={title}>
+              <h2 className="category-title">{title}</h2>
+              <div className="product-category-list">
+                {listOfProducts[title].map((product: WearData) => (
+                  <Product key={product.id} product={product} />
+                ))}
+              </div>
+            </Fragment>
+          );
+        })}
     </div>
   );
 };
