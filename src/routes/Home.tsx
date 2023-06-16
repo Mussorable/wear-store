@@ -34,6 +34,8 @@ const Home: React.FC<HomeProps> = ({ api }) => {
             </Category>
           );
         })}
+      {/* {listOfProducts &&
+          Object.keys(listOfProducts).map()} */}
     </div>
   );
 };
