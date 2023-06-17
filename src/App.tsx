@@ -33,14 +33,11 @@ function App() {
   useEffect(() => {
     const getProducts = async () => {
       const categoryMap = await getCollectionAndDocuments();
-      // console.log(categoryMap);
       dispatch(setListOfProducts(categoryMap));
     };
 
     getProducts();
   }, []);
-
-  useEffect(() => console.log(listOfProducts), [listOfProducts]);
 
   useEffect(() => {
     onUserStateChanged((user: User | null) => {
@@ -63,7 +60,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigation />}>
           <Route index element={<Home api={api} />} />
-          <Route path="shop" element={<Shop />} />
+          <Route path="shop/*" element={<Shop />} />
           <Route path="signin" element={<Auth />} />
           <Route path="checkout" element={<Checkout />} />
         </Route>
