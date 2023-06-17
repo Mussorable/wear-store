@@ -5,6 +5,10 @@ interface MainCategories {
   imageURL: string;
 }
 
+type ProductList = {
+  [title: string]: WearData[];
+};
+
 export interface WearData {
   id: number;
   imageUrl: string;
@@ -19,8 +23,8 @@ interface TotalCartDataInterface {
 }
 
 const initialState = {
+  listOfProducts: {} as ProductList,
   mainCategories: [] as MainCategories[],
-  hats: [] as WearData[],
   cartItems: [] as WearData[],
   totalCartProducts: {
     totalQuantity: 0,
@@ -32,11 +36,11 @@ const categoriesSlice = createSlice({
   name: "categories",
   initialState,
   reducers: {
+    setListOfProducts(state, action) {
+      state.listOfProducts = action.payload;
+    },
     setMainCaterories(state, action) {
       state.mainCategories = action.payload;
-    },
-    setHats(state, action) {
-      state.hats = action.payload;
     },
     setCartItems(state, action) {
       state.cartItems = action.payload;
@@ -68,8 +72,8 @@ const categoriesSlice = createSlice({
 });
 
 export const {
+  setListOfProducts,
   setMainCaterories,
-  setHats,
   setCartItems,
   setTotalCartProducts,
   setDeleteProductFromCart,

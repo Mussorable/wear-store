@@ -1,5 +1,5 @@
 import { AxiosInstance } from "axios";
-import { useEffect } from "react";
+import { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Category from "../parts/category";
 import { RootState } from "../redux-components/store";
@@ -29,9 +29,9 @@ const Home: React.FC<HomeProps> = ({ api }) => {
       {categories &&
         categories.map(({ title, imageURL }) => {
           return (
-            <Category imageURL={imageURL} key={title}>
-              {title}
-            </Category>
+            <Fragment key={title}>
+              <Category imageURL={imageURL} title={title} />
+            </Fragment>
           );
         })}
     </div>
