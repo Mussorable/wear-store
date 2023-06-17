@@ -261,14 +261,21 @@ body .auth-container form .button-wrapper {
 }
 .products-container .category-title {
   text-align: center;
-  text-transform: capitalize;
   font-size: 2.5rem;
   letter-spacing: -1px;
+  margin-bottom: 0;
+}
+.products-container .category-title a {
+  letter-spacing: 4px;
+}
+.products-container .category-title a:hover {
+  opacity: 0.5;
 }
 .products-container .product-category-list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
+  margin-block: 2rem;
 }
 .products-container .product-category-list .product-card-container {
   position: relative;
