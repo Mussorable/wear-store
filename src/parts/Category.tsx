@@ -1,11 +1,17 @@
+import { useNavigate } from "react-router-dom";
+
 interface CategoryProps {
-  children: React.ReactNode;
   imageURL: string;
+  title: string;
 }
 
-const Category: React.FC<CategoryProps> = ({ children, imageURL }) => {
+const Category: React.FC<CategoryProps> = ({ imageURL, title }) => {
+  const navigate = useNavigate();
+
+  const onNavigateHandler = () => navigate("shop/" + title.toLowerCase());
+
   return (
-    <div className="category-container">
+    <div className="category-container" onClick={onNavigateHandler}>
       <div
         className="background-image"
         style={{
@@ -13,7 +19,7 @@ const Category: React.FC<CategoryProps> = ({ children, imageURL }) => {
         }}
       />
       <div className="category-body-container">
-        <h2>{children}</h2>
+        <h2>{title}</h2>
         <p>Shop now</p>
       </div>
     </div>
