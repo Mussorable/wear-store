@@ -10,7 +10,9 @@ const ProductCard = () => {
   const listOfProducts = useSelector(
     (state: RootState) => state.categories.listOfProducts
   );
-  const [products, setProducts] = useState([] as WearData[]);
+  const [products, setProducts] = useState(
+    category ? listOfProducts[category] : ([] as WearData[])
+  );
 
   useEffect(() => {
     {
