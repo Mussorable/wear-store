@@ -18,9 +18,7 @@ import { RootState } from "./redux-components/store";
 import { setListOfProducts } from "./redux-components/categoriesSlice";
 
 function App() {
-  const listOfProducts = useSelector(
-    (state: RootState) => state.categories.listOfProducts
-  );
+  useSelector((state: RootState) => state.categories.listOfProducts);
   const dispatch = useDispatch();
   const api = axios.create({
     baseURL:

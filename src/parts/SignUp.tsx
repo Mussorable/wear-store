@@ -5,7 +5,7 @@ import {
   createUserDocumentAuth,
 } from "../utils/firebase/firebase.utils";
 import Button from "./s-components/Button";
-import ErrorHandler from "../utils/error-handler/errorHandler";
+import ErrorHandler from "../utils/error-handler/ErrorHandler";
 import { FirebaseError } from "firebase/app";
 
 const SignUp = () => {
