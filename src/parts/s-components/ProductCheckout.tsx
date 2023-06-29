@@ -1,6 +1,5 @@
 import {
   setCartItems,
-  setDeleteProductFromCart,
   setTotalCartProducts,
   WearData,
 } from "../../redux-components/categoriesSlice";
@@ -14,9 +13,7 @@ const ProductCheckout: React.FC<WearData> = (item) => {
   const cartItems = useSelector(
     (state: RootState) => state.categories.cartItems
   );
-  const totalCartProducts = useSelector(
-    (state: RootState) => state.categories.totalCartProducts
-  );
+  useSelector((state: RootState) => state.categories.totalCartProducts);
 
   const dispatch = useDispatch();
   const { quantity, name, imageUrl, price, id } = item;

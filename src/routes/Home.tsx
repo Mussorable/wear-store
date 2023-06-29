@@ -1,7 +1,7 @@
 import { AxiosInstance } from "axios";
 import { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Category from "../parts/category";
+import Category from "../parts/Category";
 import { RootState } from "../redux-components/store";
 import { setMainCaterories } from "../redux-components/categoriesSlice";
 

@@ -1,4 +1,4 @@
-import { MouseEventHandler, useEffect } from "react";
+import { MouseEventHandler } from "react";
 import { useSelector } from "react-redux";
 import { default as Cart } from "../../assets/shopping-bag.svg";
 import { RootState } from "../../redux-components/store";

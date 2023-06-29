@@ -5,7 +5,7 @@ import {
 } from "../utils/firebase/firebase.utils";
 import Button from "./s-components/Button";
 import Input from "./s-components/Input";
-import ErrorHandler from "../utils/error-handler/errorHandler.js";
+import ErrorHandler from "../utils/error-handler/ErrorHandler.js";
 import { FirebaseError } from "firebase/app";
 
 const SignIn = () => {
